@@ -1,12 +1,16 @@
 import Typography from '@mui/material/Typography';
-import { QuestionData } from '../../api/questions.model';
+import { QuestionData, QuestionValue } from '../../api/questions.model';
 import CheckboxQuestion from './CheckboxQuestion';
 import Dropdown from './DropdownQuestion';
 import RadioQuestion from './RadioQuestion';
 import TextFieldQuestion from './TextFieldQuestion';
 import TextareaQuestion from './TextareaQuestion';
 
-export type QuestionProps = { question: QuestionData };
+export type QuestionProps = {
+  question: QuestionData;
+  updateFormData: (questionId: string, value: QuestionValue) => void;
+  value?: QuestionValue;
+};
 const renderQuestion = (props: QuestionProps) => {
   const type = props.question.type;
   switch (type) {
