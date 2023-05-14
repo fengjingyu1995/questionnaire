@@ -1,33 +1,39 @@
+import Typography from '@mui/material/Typography';
 import { QuestionData } from '../../api/questions.model';
-import Checkbox from './Checkbox';
-import Dropdown from './Dropdown';
-import Radio from './Radio';
-import TextField from './TextField';
-import Textarea from './Textarea';
+import CheckboxQuestion from './CheckboxQuestion';
+import Dropdown from './DropdownQuestion';
+import RadioQuestion from './RadioQuestion';
+import TextFieldQuestion from './TextFieldQuestion';
+import TextareaQuestion from './TextareaQuestion';
 
-const renderQuestion = (question: QuestionData) => {
-  switch (question.type) {
+export type QuestionProps = { question: QuestionData };
+const renderQuestion = (props: QuestionProps) => {
+  const type = props.question.type;
+  switch (type) {
     case 'text':
     case 'number':
-      return <TextField question={question} />;
+      return <TextFieldQuestion {...props} />;
     case 'dropdown':
-      return <Dropdown question={question} />;
+      return <Dropdown {...props} />;
     case 'checkbox':
-      return <Checkbox question={question} />;
+      return <CheckboxQuestion {...props} />;
     case 'radio':
-      return <Radio question={question} />;
+      return <RadioQuestion {...props} />;
     case 'textarea':
-      return <Textarea question={question} />;
+      return <TextareaQuestion {...props} />;
 
     default:
-      throw new Error(`Unknown type ${question.type}`);
+      throw new Error(`Unknown type:  ${type}`);
   }
 };
 
-type Props = { question: QuestionData };
-
-const Question = ({ question }: Props) => {
-  return <div>{renderQuestion(question)}</div>;
+const Question = (props: QuestionProps) => {
+  return (
+    <div>
+      <Typography>{props.question.title}</Typography>
+      {renderQuestion(props)}
+    </div>
+  );
 };
 
 export default Question;
