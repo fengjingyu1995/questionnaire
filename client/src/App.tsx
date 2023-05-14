@@ -1,11 +1,11 @@
-import Button from '@mui/material/Button';
 import './App.css';
+import Home from './pages/Home';
 
 function App() {
   return (
-    <>
-      <Button variant="contained">Hello World</Button>
-    </>
+    <main>
+      <Home />
+    </main>
   );
 }
 
