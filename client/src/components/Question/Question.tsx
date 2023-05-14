@@ -5,6 +5,7 @@ import Dropdown from './DropdownQuestion';
 import RadioQuestion from './RadioQuestion';
 import TextFieldQuestion from './TextFieldQuestion';
 import TextareaQuestion from './TextareaQuestion';
+import './Question.css';
 
 export type QuestionProps = {
   question: QuestionData;
@@ -33,9 +34,11 @@ const renderQuestion = (props: QuestionProps) => {
 
 const Question = (props: QuestionProps) => {
   return (
-    <div>
-      <Typography>{props.question.title}</Typography>
-      {renderQuestion(props)}
+    <div className="question">
+      <Typography align="center" variant="h4" component="h1">
+        {props.question.title}
+      </Typography>
+      <div className="questionInput">{renderQuestion(props)}</div>
     </div>
   );
 };

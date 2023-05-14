@@ -5,6 +5,8 @@ import Question from '../components/Question/Question';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import { ChevronLeft, ChevronRight } from '@mui/icons-material';
+import './Home.css';
+import Container from '@mui/material/Container';
 
 type FormData = {
   [id: string]: QuestionValue;
@@ -49,33 +51,35 @@ const Home = () => {
   const currentQuestion = questions[activeStep];
 
   return (
-    <form onSubmit={e => handleNext(e)}>
-      <Question
-        key={currentQuestion.id}
-        question={currentQuestion}
-        updateFormData={updateFormData}
-        value={formData[currentQuestion.id]}
-      />
-      <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
-        <Button
-          color="inherit"
-          disabled={activeStep === 0}
-          onClick={handleBack}
-          sx={{ mr: 1 }}
-          startIcon={<ChevronLeft />}
-        >
-          Back
-        </Button>
-        <Box sx={{ flex: '1 1 auto' }} />
-        <Button
-          type="submit"
-          sx={{ mr: 1 }}
-          endIcon={isLastStep() ? undefined : <ChevronRight />}
-        >
-          {isLastStep() ? 'Complete' : 'Next'}
-        </Button>
-      </Box>
-    </form>
+    <Container>
+      <form className="questionnaire" onSubmit={e => handleNext(e)}>
+        <Question
+          key={currentQuestion.id}
+          question={currentQuestion}
+          updateFormData={updateFormData}
+          value={formData[currentQuestion.id]}
+        />
+        <Box sx={{ display: 'flex', flexDirection: 'row', py: 2 }}>
+          <Button
+            color="inherit"
+            disabled={activeStep === 0}
+            onClick={handleBack}
+            sx={{ mr: 1 }}
+            startIcon={<ChevronLeft />}
+          >
+            Back
+          </Button>
+          <Box sx={{ flex: '1 1 auto' }} />
+          <Button
+            type="submit"
+            sx={{ mr: 1 }}
+            endIcon={isLastStep() ? undefined : <ChevronRight />}
+          >
+            {isLastStep() ? 'Complete' : 'Next'}
+          </Button>
+        </Box>
+      </form>
+    </Container>
   );
 };
 

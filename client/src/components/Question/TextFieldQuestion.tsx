@@ -13,13 +13,13 @@ const TextFieldQuestion = ({
     updateFormData(id, e.target.value);
   };
   return (
-    <>
-      <TextField
-        required={required}
-        onChange={e => handleChange(e)}
-        value={value ?? ''}
-      />
-    </>
+    <TextField
+      required={required}
+      onChange={e => handleChange(e)}
+      value={value ?? ''}
+      label={question.title}
+      fullWidth
+    />
   );
 };
 
