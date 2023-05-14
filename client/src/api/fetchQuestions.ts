@@ -1,5 +1,5 @@
 import { QuestionData } from './questions.model';
-import questions from './questions.json';
+import questions from './textQuestions.json';
 
 export const fetchQuestions = (): Promise<Array<QuestionData>> => {
   return new Promise(resolve =>
