@@ -38,7 +38,7 @@
       "title": "What is your preferred method of transportation?",
       "type": "radio",
       "options": ["Car", "Public transportation", "Bicycle", "Walking"],
-      "required": false
+      "required": true
     },
     {
       "id": "7",
