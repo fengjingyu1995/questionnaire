@@ -1,4 +1,4 @@
-import { QuestionnaireFormData } from '../pages/Home';
+import { QuestionnaireFormData } from '../hooks/useQuestionnaire';
 import { QuestionnaireData } from './questions.model';
 
 // TODO: load it from .env
