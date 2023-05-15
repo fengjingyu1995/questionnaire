@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { fetchQuestions } from '../api/fetchQuestions';
+import { fetchQuestionnaire } from '../api/fetchQuestionnaire';
 import { QuestionValue, QuestionnaireData } from '../api/questions.model';
 import Question from '../components/Question/Question';
 import Button from '@mui/material/Button';
@@ -21,7 +21,7 @@ const Home = () => {
   const [activeStep, setActiveStep] = useState(0);
 
   useEffect(() => {
-    fetchQuestions().then(data => {
+    fetchQuestionnaire().then(data => {
       setQuestionnaireData(data);
     });
   }, []);

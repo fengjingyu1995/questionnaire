@@ -1,9 +1,12 @@
 import express from 'express';
-import questionnaire from './data/questionnaire.json'
+import cors from 'cors';
+import questionnaire from './data/questionnaire.json';
 
-const app = express();
 const port = 3000;
 
+const app = express();
+
+app.use(cors());
 app.get('/questionnaire', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
   res.send(JSON.stringify(questionnaire));
