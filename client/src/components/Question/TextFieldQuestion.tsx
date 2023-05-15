@@ -6,7 +6,7 @@ const TextFieldQuestion = ({
   updateFormData,
   value,
 }: QuestionProps) => {
-  const { required, id } = question;
+  const { required, id, type } = question;
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -18,6 +18,7 @@ const TextFieldQuestion = ({
       onChange={e => handleChange(e)}
       value={value ?? ''}
       label={question.title}
+      type={type}
       fullWidth
     />
   );
