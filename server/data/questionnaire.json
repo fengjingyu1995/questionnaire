@@ -31,7 +31,7 @@
       "title": "Which of the following programming languages do you know?",
       "type": "checkbox",
       "options": ["JavaScript", "Python", "Java", "C++"],
-      "required": true
+      "required": false
     },
     {
       "id": "6",
@@ -44,7 +44,7 @@
       "id": "7",
       "title": "Please provide any additional comments or feedback.",
       "type": "textarea",
-      "required": false
+      "required": true
     }
   ]
 }
