@@ -4,15 +4,19 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormGroup from '@mui/material/FormGroup';
 import RadioGroup from '@mui/material/RadioGroup';
 
-const RadioQuestion = ({ question }: QuestionProps) => {
-  const { options } = question;
+const RadioQuestion = ({ question, updateFormData, value }: QuestionProps) => {
+  const { required, id, options } = question;
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    updateFormData(id, e.target.value);
+  };
+
   return (
     <FormGroup>
-      <RadioGroup>
+      <RadioGroup value={value} onChange={handleChange}>
         {options?.map(option => (
           <FormControlLabel
             key={option}
-            control={<Radio />}
+            control={<Radio required={required} />}
             label={option}
             value={option}
           />

@@ -1,13 +1,13 @@
 .question {
   min-height: 50vh;
-  padding-top: 2rem;
+  padding-top: 5rem;
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 .questionInput {
-  flex-grow: 1;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  padding: 4rem 0;
   width: 100%;
+  flex-grow: 1;
 }

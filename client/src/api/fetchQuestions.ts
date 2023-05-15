@@ -1,10 +1,10 @@
-import { QuestionData } from './questions.model';
-import questions from './textQuestions.json';
+import { QuestionnaireData } from './questions.model';
+import questions from './questions.json';
 
-export const fetchQuestions = (): Promise<Array<QuestionData>> => {
+export const fetchQuestions = (): Promise<QuestionnaireData> => {
   return new Promise(resolve =>
     setTimeout(() => {
-      resolve(questions.questions as Array<QuestionData>);
+      resolve(questions as QuestionnaireData);
     }, 1000)
   );
 };

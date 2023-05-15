@@ -35,7 +35,7 @@ const renderQuestion = (props: QuestionProps) => {
 const Question = (props: QuestionProps) => {
   return (
     <div className="question">
-      <Typography align="center" variant="h4" component="h1">
+      <Typography variant="h4" component="h2">
         {props.question.title}
       </Typography>
       <div className="questionInput">{renderQuestion(props)}</div>

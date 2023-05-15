@@ -1,31 +1,34 @@
 import { useEffect, useState } from 'react';
 import { fetchQuestions } from '../api/fetchQuestions';
-import { QuestionData, QuestionValue } from '../api/questions.model';
+import { QuestionValue, QuestionnaireData } from '../api/questions.model';
 import Question from '../components/Question/Question';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import { ChevronLeft, ChevronRight } from '@mui/icons-material';
 import './Home.css';
 import Container from '@mui/material/Container';
+import LinearProgress from '@mui/material/LinearProgress';
+import Typography from '@mui/material/Typography';
 
 type FormData = {
   [id: string]: QuestionValue;
 };
 
 const Home = () => {
-  const [questions, setQuestions] = useState<QuestionData[] | null>(null);
+  const [questionnaireData, setQuestionnaireData] =
+    useState<QuestionnaireData | null>(null);
   const [formData, setFormData] = useState<FormData>({});
   const [activeStep, setActiveStep] = useState(0);
 
   useEffect(() => {
     fetchQuestions().then(data => {
-      setQuestions(data);
+      setQuestionnaireData(data);
     });
   }, []);
-
-  if (!questions) {
+  if (!questionnaireData) {
     return <div>Loading...</div>;
   }
+  const { questions, questionnaireTitle } = questionnaireData;
 
   const isLastStep = () => activeStep === questions?.length - 1;
   const updateFormData = (questionId: string, value: QuestionValue) => {
@@ -51,8 +54,15 @@ const Home = () => {
   const currentQuestion = questions[activeStep];
 
   return (
-    <Container>
+    <Container maxWidth="lg">
       <form className="questionnaire" onSubmit={e => handleNext(e)}>
+        <Typography variant="h3" component="h1" color="primary">
+          {questionnaireTitle}
+        </Typography>
+        <LinearProgress
+          variant="determinate"
+          value={(activeStep / questions.length) * 100}
+        />
         <Question
           key={currentQuestion.id}
           question={currentQuestion}
