@@ -12,7 +12,7 @@ const RadioQuestion = ({ question, updateFormData, value }: QuestionProps) => {
 
   return (
     <FormGroup>
-      <RadioGroup value={value} onChange={handleChange}>
+      <RadioGroup value={value ?? null} onChange={handleChange}>
         {options?.map(option => (
           <FormControlLabel
             key={option}

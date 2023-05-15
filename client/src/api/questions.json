@@ -24,7 +24,7 @@
       "title": "What is your favorite color?",
       "type": "dropdown",
       "options": ["Red", "Blue", "Green"],
-      "required": false
+      "required": true
     },
     {
       "id": "5",

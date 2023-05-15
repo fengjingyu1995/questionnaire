@@ -4,14 +4,14 @@ import { TextField } from '@mui/material';
 import { QuestionValue } from '../../api/questions.model';
 
 const Dropdown = ({ question, updateFormData, value }: QuestionProps) => {
-  const { options, id } = question;
+  const { options, id, required } = question;
   const handleChange = (newValue: QuestionValue) => {
     updateFormData(id, newValue);
   };
   return (
     <Autocomplete
       options={options ?? []}
-      renderInput={params => <TextField {...params} />}
+      renderInput={params => <TextField {...params} required={required} />}
       fullWidth
       value={(value as string) ?? null}
       onChange={(e, newValue) => handleChange(newValue as QuestionValue)}
