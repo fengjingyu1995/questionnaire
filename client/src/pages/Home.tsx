@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react';
-import { fetchQuestionnaire } from '../api/fetchQuestionnaire';
+import {
+  fetchQuestionnaire,
+  submitQuestionnaire,
+} from '../api/questionnaireApi';
 import { QuestionValue, QuestionnaireData } from '../api/questions.model';
 import Question from '../components/Question/Question';
 import Button from '@mui/material/Button';
@@ -10,14 +13,14 @@ import Container from '@mui/material/Container';
 import LinearProgress from '@mui/material/LinearProgress';
 import Typography from '@mui/material/Typography';
 
-type FormData = {
+export type QuestionnaireFormData = {
   [id: string]: QuestionValue;
 };
 
 const Home = () => {
   const [questionnaireData, setQuestionnaireData] =
     useState<QuestionnaireData | null>(null);
-  const [formData, setFormData] = useState<FormData>({});
+  const [formData, setFormData] = useState<QuestionnaireFormData>({});
   const [activeStep, setActiveStep] = useState(0);
 
   useEffect(() => {
@@ -41,12 +44,12 @@ const Home = () => {
     setActiveStep(prevActiveStep => prevActiveStep - 1);
   };
 
-  const handleNext = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleNext = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (isLastStep()) {
       // complete
-      console.log(formData);
+      await submitQuestionnaire(formData);
     } else {
       setActiveStep(prevActiveStep => prevActiveStep + 1);
     }
@@ -85,7 +88,7 @@ const Home = () => {
             sx={{ mr: 1 }}
             endIcon={isLastStep() ? undefined : <ChevronRight />}
           >
-            {isLastStep() ? 'Complete' : 'Next'}
+            {isLastStep() ? 'Submit' : 'Next'}
           </Button>
         </Box>
       </form>
