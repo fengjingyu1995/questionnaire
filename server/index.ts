@@ -15,7 +15,9 @@ app.get('/questionnaire', (req, res) => {
 
 app.post('/questionnaire/submit', (req, res) => {
   console.log(req.body);
-  res.send('questionnaire is received');
+  setTimeout(() => {
+    res.send('questionnaire is received');
+  }, 3000);
 });
 
 app.listen(port, () => {

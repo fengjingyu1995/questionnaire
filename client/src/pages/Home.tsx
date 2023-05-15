@@ -94,14 +94,16 @@ const Home = () => {
             onClick={handleBack}
             sx={{ mr: 1 }}
             startIcon={<ChevronLeft />}
+            size="large"
           >
             Back
           </Button>
           <Box sx={{ flex: '1 1 auto' }} />
-          <Box>
-            {isSubmitQuestionnaireLoading ?? <CircularProgress />}
+          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            {isSubmitQuestionnaireLoading && <CircularProgress size="25px" />}
             <Button
               type="submit"
+              size="large"
               sx={{ mr: 1 }}
               endIcon={isLastStep() ? undefined : <ChevronRight />}
             >

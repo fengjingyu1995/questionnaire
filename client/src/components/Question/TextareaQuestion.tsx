@@ -12,7 +12,7 @@ const TextareaQuestion = ({ question, updateFormData }: QuestionProps) => {
     <TextareaAutosize
       minRows={5}
       style={{ width: '100%' }}
-      required
+      required={required}
       onChange={e => handleChange(e)}
     />
   );
